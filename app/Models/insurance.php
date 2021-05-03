@@ -21,6 +21,7 @@ class insurance extends Model
         'startdate',
         'prem',
         'summ',
+        'enddate',
         'fran',
         'login',
         'polNumber',

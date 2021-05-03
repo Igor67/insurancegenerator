@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Rap2hpoutre\FastExcel\FastExcel;
 use App\Models\User;
+
 class insuranceAddController extends Controller
 {
     /**
@@ -36,6 +37,7 @@ class insuranceAddController extends Controller
             return 'Ты кто такой?';
         }
     }
+
     public function previewPeople()
     {
         if (\Illuminate\Support\Facades\Auth::check()) {
@@ -45,6 +47,7 @@ class insuranceAddController extends Controller
             return 'Ты кто такой?';
         }
     }
+
     public function previewFirms()
     {
         if (\Illuminate\Support\Facades\Auth::check()) {
@@ -54,6 +57,7 @@ class insuranceAddController extends Controller
             return 'Ты кто такой?';
         }
     }
+
     public function previewDocs()
     {
         if (\Illuminate\Support\Facades\Auth::check()) {
@@ -63,11 +67,12 @@ class insuranceAddController extends Controller
             return 'Ты кто такой?';
         }
     }
+
     public function print()
     {
         $docs = DB::table('insurances')->where('login', 'LIKE', '%' . Auth::user()->name . '%')->get();
         $books = [
-            ['№з/п', 'Серія', 'Номер', 'Дата укладення', 'Дата початку', 'Дата закінчення' , 'К-сть днів' , 'Франшиза' ,  'Програма' , 'Країна пребування' , 'Страхувальник/Застрахована особа' , 'Паспорт' , 'Дата народження', 'Страхова сума МВ', 'ВАЛЮТА страхової суми', 'Премія МВ, грн.' ]];
+            ['№з/п', 'Серія', 'Номер', 'Дата укладення', 'Дата початку', 'Дата закінчення', 'К-сть днів', 'Франшиза', 'Програма', 'Країна пребування', 'Страхувальник/Застрахована особа', 'Паспорт', 'Дата народження', 'Страхова сума МВ', 'ВАЛЮТА страхової суми', 'Премія МВ, грн.']];
 
         foreach ($docs as $doc) {
             $arr = [];
@@ -103,8 +108,10 @@ class insuranceAddController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->get('printFlag') != '2') {
+        if ($request->get('printFlag') != '2') {
             $login = \Illuminate\Support\Facades\Auth::user()->name;
+            $start = $request->get('startdate');
+            $end = date('Y-m-d', strtotime($start . ' + ' . $request->get('days') . ' days'));
             $insurance = new insurance([
                 'passportNumber' => $request->get('passportNumber'),
                 'home' => $request->get('home'),
@@ -112,6 +119,7 @@ class insuranceAddController extends Controller
                 'login' => $login,
                 'startdate' => $request->get('startdate'),
                 'prem' => $request->get('prem'),
+                'enddate' => $end,
                 'summ' => $request->get('summ'),
                 'fran' => $request->get('fran'),
                 'polNumber' => $request->get('polNumber'),
@@ -160,13 +168,13 @@ class insuranceAddController extends Controller
                     'tel' => $request->get('tel'),
                 ]);
                 $client->save();
-                if($request->get('printFlag') != '0' ){
+                if ($request->get('printFlag') != '0') {
                     $str = explode('-', $request->get('passportDate'));
-                    $str[0] = (int) $str[0]+10;
-                    $str = $str[2] . '-' .$str[1] . '-' .$str[0];
+                    $str[0] = (int)$str[0] + 10;
+                    $str = $str[2] . '-' . $str[1] . '-' . $str[0];
                     $insDates = explode('-', $request->get('stratDate'));
                     return view('insurance.print.print', compact('request', 'str'));
-                }else {
+                } else {
                     return 'Not found';
                 }
             } else {
@@ -193,21 +201,21 @@ class insuranceAddController extends Controller
                 $client->lastVizaEnding4 = $request->get('lastVizaEnding4');
                 $client->tel = $request->get('tel');
                 $client->save();
-                if($request->get('printFlag') != '0' ){
+                if ($request->get('printFlag') != '0') {
                     $str = explode('-', $request->get('passportDate'));
-                    $str[0] = (int) $str[0]+10;
-                    $str = $str[2] . '-' .$str[1] . '-' .$str[0];
+                    $str[0] = (int)$str[0] + 10;
+                    $str = $str[2] . '-' . $str[1] . '-' . $str[0];
                     $insDates = explode('-', $request->get('stratDate'));
                     return view('insurance.print.print', compact('request', 'str'));
-                }else {
+                } else {
                     return 'found';
                 }
             }
         }
-        if($request->get('printFlag') != '0' ){
+        if ($request->get('printFlag') != '0') {
             $str = explode('-', $request->get('passportDate'));
-            $str[0] = (int) $str[0]+10;
-            $str = $str[2] . '-' .$str[1] . '-' .$str[0];
+            $str[0] = (int)$str[0] + 10;
+            $str = $str[2] . '-' . $str[1] . '-' . $str[0];
             $insDates = explode('-', $request->get('stratDate'));
             return view('insurance.print.print', compact('request', 'str'));
         }

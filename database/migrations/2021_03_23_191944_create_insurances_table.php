@@ -20,6 +20,7 @@ class CreateInsurancesTable extends Migration
             $table->string('days');
             $table->string('startdate');
             $table->string('prem');
+            $table->string('enddate');
             $table->string('summ');
             $table->string('fran');
             $table->string('polNumber');
