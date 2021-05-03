@@ -2035,7 +2035,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['test', 'giverName', 'giverLastName', 'passportNumber', 'birthday', 'home', 'days', 'startdate', 'prem', 'summ', 'fran', 'polNumber', 'type', 'createDate', 'tel', 'lastNameGirl', 'country', 'citizenship', 'placeOfBirth', 'passportDate', 'passportWhoGave', 'lastVizaBeginning1', 'lastVizaEnding1', 'lastVizaBeginning2', 'lastVizaEnding2', 'lastVizaBeginning3', 'lastVizaEnding3', 'lastVizaBeginning4', 'lastVizaEnding4', 'firm', 'firmBody', 'electronicNumber'],
+  props: ['test', 'giverName', 'giverLastName', 'passportNumber', 'birthday', 'home', 'days', 'startdate', 'prem', // 'summ',
+  // 'fran',
+  'polNumber', // 'type',
+  // 'createDate',
+  'tel', 'lastNameGirl', // 'country',
+  // 'citizenship',
+  // 'placeOfBirth',
+  'passportDate', // 'passportWhoGave',
+  // 'lastVizaBeginning1',
+  // 'lastVizaEnding1',
+  // 'lastVizaBeginning2',
+  // 'lastVizaEnding2',
+  // 'lastVizaBeginning3',
+  // 'lastVizaEnding3',
+  // 'lastVizaBeginning4',
+  // 'lastVizaEnding4',
+  'firm', 'firmBody', 'electronicNumber'],
   data: function data() {
     return {
       passportNumber: null,
@@ -2043,7 +2059,23 @@ __webpack_require__.r(__webpack_exports__);
       code: '',
       test: 'all',
       Firms: [],
-      Pols: []
+      Pols: [],
+      createDate: new Date().toISOString().slice(0, 10),
+      fran: '50',
+      type: 'A',
+      summ: '30000',
+      country: 'UKR',
+      citizenship: 'UKRAINE',
+      placeOfBirth: 'KIRIVOHRADSKA OBL.',
+      passportWhoGave: 'UKRAINE',
+      lastVizaBeginning1: '-',
+      lastVizaEnding1: '-',
+      lastVizaBeginning2: '-',
+      lastVizaEnding2: '-',
+      lastVizaBeginning3: '-',
+      lastVizaEnding3: '-',
+      lastVizaBeginning4: '-',
+      lastVizaEnding4: '-'
     };
   },
   watch: {
@@ -38697,14 +38729,6 @@ var render = function() {
                 _vm.passportNumber = _vm.Passports[0].passportNumber
                 _vm.birthday = _vm.Passports[0].birthday
                 _vm.home = _vm.Passports[0].home
-                _vm.days = _vm.Passports[0].days
-                _vm.startdate = _vm.Passports[0].startdate
-                _vm.prem = _vm.Passports[0].prem
-                _vm.summ = _vm.Passports[0].summ
-                _vm.fran = _vm.Passports[0].fran
-                _vm.polNumber = _vm.Passports[0].polNumber
-                _vm.type = _vm.Passports[0].type
-                _vm.createDate = _vm.Passports[0].createDate
                 _vm.tel = _vm.Passports[0].tel
                 _vm.lastNameGirl = _vm.Passports[0].lastNameGirl
                 _vm.country = _vm.Passports[0].country
@@ -39058,7 +39082,7 @@ var render = function() {
     _vm.test === "strahovka" || _vm.test === "all"
       ? _c("div", [
           _c("label", { attrs: { for: "createDate" } }, [
-            _vm._v("Дата созддания полиса")
+            _vm._v("Дата создания полиса")
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "star" }, [_vm._v("*")]),

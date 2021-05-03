@@ -50,7 +50,7 @@ class reportController extends Controller
                         $doc->polNumber,
                         $doc->createDate,
                         $doc->startdate,
-                        'TODO',
+                        $doc->enddate,
                         $doc->days,
                         $doc->fran,
                         $doc->type,

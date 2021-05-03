@@ -172,8 +172,17 @@ class insuranceAddController extends Controller
                     $str = explode('-', $request->get('passportDate'));
                     $str[0] = (int)$str[0] + 10;
                     $str = $str[2] . '-' . $str[1] . '-' . $str[0];
-                    $insDates = explode('-', $request->get('stratDate'));
-                    return view('insurance.print.print', compact('request', 'str'));
+                    $insDates = explode('-', $request->get('startdate'));
+                    $start = $request->get('startdate');
+                    $end = date('Y-m-d', strtotime($start . ' + ' . $request->get('days') . ' days'));
+                    $insDates2 = explode('-', $end);
+                    $day = $insDates[2];
+                    $month = $insDates[1];
+                    $year = $insDates[0];
+                    $dayEnd = $insDates2[2];
+                    $monthEnd = $insDates2[1];
+                    $yearEnd = $insDates2[0];
+                    return view('insurance.print.print', compact('request', 'str', 'day', 'month', 'year', 'dayEnd', 'monthEnd', 'yearEnd', ));
                 } else {
                     return 'Not found';
                 }
@@ -205,8 +214,17 @@ class insuranceAddController extends Controller
                     $str = explode('-', $request->get('passportDate'));
                     $str[0] = (int)$str[0] + 10;
                     $str = $str[2] . '-' . $str[1] . '-' . $str[0];
-                    $insDates = explode('-', $request->get('stratDate'));
-                    return view('insurance.print.print', compact('request', 'str'));
+                    $insDates = explode('-', $request->get('startdate'));
+                    $start = $request->get('startdate');
+                    $end = date('Y-m-d', strtotime($start . ' + ' . $request->get('days') . ' days'));
+                    $insDates2 = explode('-', $end);
+                    $day = $insDates[2];
+                    $month = $insDates[1];
+                    $year = $insDates[0];
+                    $dayEnd = $insDates2[2];
+                    $monthEnd = $insDates2[1];
+                    $yearEnd = $insDates2[0];
+                    return view('insurance.print.print', compact('request', 'str', 'day', 'month', 'year', 'dayEnd', 'monthEnd', 'yearEnd', ));
                 } else {
                     return 'found';
                 }
@@ -217,7 +235,19 @@ class insuranceAddController extends Controller
             $str[0] = (int)$str[0] + 10;
             $str = $str[2] . '-' . $str[1] . '-' . $str[0];
             $insDates = explode('-', $request->get('stratDate'));
-            return view('insurance.print.print', compact('request', 'str'));
+            $start = $request->get('startdate');
+            $end = date('Y-m-d', strtotime($start . ' + ' . $request->get('days') . ' days'));
+            $insDates = explode('-', $request->get('startdate'));
+            $start = $request->get('startdate');
+            $end = date('Y-m-d', strtotime($start . ' + ' . $request->get('days') . ' days'));
+            $insDates2 = explode('-', $end);
+            $day = $insDates[2];
+            $month = $insDates[1];
+            $year = $insDates[0];
+            $dayEnd = $insDates2[2];
+            $monthEnd = $insDates2[1];
+            $yearEnd = $insDates2[0];
+            return view('insurance.print.print', compact('request', 'str', 'day', 'month', 'year', 'dayEnd', 'monthEnd', 'yearEnd', ));
         }
 
     }
