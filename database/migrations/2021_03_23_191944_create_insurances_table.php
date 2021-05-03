@@ -25,7 +25,6 @@ class CreateInsurancesTable extends Migration
             $table->string('polNumber');
             $table->string('type');
             $table->string('createDate');
-            $table->string('tel');
 
             $table->timestamps();
         });

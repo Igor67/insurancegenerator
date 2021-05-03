@@ -39,7 +39,7 @@
         <div>
             <label for="passportNumber">Номер паспорта
                 <button type="button" class="btn btn-sm btn-primary"
-                        v-on:click="electronicNumber = Passports[0].electronicNumber; giverName = Passports[0].giverName; giverLastName = Passports[0].giverLastName; passportNumber = Passports[0].passportNumber; birthday = Passports[0].birthday; home = Passports[0].home; days = Passports[0].days; startdate = Passports[0].startdate; prem = Passports[0].prem; summ = Passports[0].summ; fran = Passports[0].fran; polNumber = Passports[0].polNumber; type = Passports[0].type; createDate = Passports[0].createDate; tel = Passports[0].tel; lastNameGirl = Passports[0].lastNameGirl; country = Passports[0].country; citizenship = Passports[0].citizenship; placeOfBirth = Passports[0].placeOfBirth; passportDate = Passports[0].passportDate; passportWhoGave = Passports[0].passportWhoGave; lastVizaBeginning1 = Passports[0].lastVizaBeginning1; lastVizaEnding1 = Passports[0].lastVizaEnding1; lastVizaBeginning2 = Passports[0].lastVizaBeginning2; lastVizaEnding2 = Passports[0].lastVizaEnding2; lastVizaBeginning3 = Passports[0].lastVizaBeginning3; lastVizaEnding3 = Passports[0].lastVizaEnding3; lastVizaBeginning4 = Passports[0].lastVizaBeginning4; lastVizaEnding4 = Passports[0].lastVizaEnding4; firm = Passports[0].firm; firmBody = Passports[0].firmBody; ">
+                        v-on:click="electronicNumber = Passports[0].electronicNumber; giverName = Passports[0].giverName; giverLastName = Passports[0].giverLastName; passportNumber = Passports[0].passportNumber; birthday = Passports[0].birthday; home = Passports[0].home; days = Passports[0].days; startdate = Passports[0].startdate; prem = Passports[0].prem; summ = Passports[0].summ; fran = Passports[0].fran; polNumber = Passports[0].polNumber; type = Passports[0].type; createDate = Passports[0].createDate; tel = Passports[0].tel; lastNameGirl = Passports[0].lastNameGirl; country = Passports[0].country; citizenship = Passports[0].citizenship; placeOfBirth = Passports[0].placeOfBirth; passportDate = Passports[0].passportDate; passportWhoGave = Passports[0].passportWhoGave; lastVizaBeginning1 = Passports[0].lastVizaBeginning1; lastVizaEnding1 = Passports[0].lastVizaEnding1; lastVizaBeginning2 = Passports[0].lastVizaBeginning2; lastVizaEnding2 = Passports[0].lastVizaEnding2; lastVizaBeginning3 = Passports[0].lastVizaBeginning3; lastVizaEnding3 = Passports[0].lastVizaEnding3; lastVizaBeginning4 = Passports[0].lastVizaBeginning4; lastVizaEnding4 = Passports[0].lastVizaEnding4;   tel = Passports[0].tel ">
                     Импортировать по номеру паспорта
                 </button>
             </label>
@@ -84,8 +84,8 @@
         <div v-if="test === 'strahovka' || test === 'all'">
             <label for="polNumber">Номер полиса</label>
             <button type="button" class="btn btn-sm btn-primary"
-                    v-on:click="days = Pols[0].days; startDate=Pols[0].startdate; prem = Pols[0].prem; summ = Pols[0].summ;  fran = Pols[0].fran; type = Pols[0].type;  tel = Pols[0].tel">
-                Импортировать по названию фирмы.
+                    v-on:click="days = Pols[0].days; startDate=Pols[0].startdate; prem = Pols[0].prem; summ = Pols[0].summ;  fran = Pols[0].fran; type = Pols[0].type; ">
+                Импортировать по номеру полиса.
             </button>
             <span class="star">*</span>
             <input required id="polNumber" v-model="polNumber" name="polNumber" type="text" class="form-control">

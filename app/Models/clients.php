@@ -28,6 +28,7 @@ class clients extends Model
         'lastVizaBeginning3',
         'lastVizaEnding3',
         'lastVizaBeginning4',
-        'lastVizaEnding4'
+        'lastVizaEnding4',
+        'tel'
     ];
 }

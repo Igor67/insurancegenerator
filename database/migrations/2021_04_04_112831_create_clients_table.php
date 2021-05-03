@@ -34,6 +34,7 @@ class CreateClientsTable extends Migration
             $table->string('lastVizaEnding3');
             $table->string('lastVizaBeginning4');
             $table->string('lastVizaEnding4');
+            $table->string('tel');
             $table->timestamps();
         });
     }

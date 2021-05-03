@@ -117,7 +117,7 @@ class insuranceAddController extends Controller
                 'polNumber' => $request->get('polNumber'),
                 'type' => $request->get('type'),
                 'createDate' => $request->get('createDate'),
-                'tel' => $request->get('tel'),
+
             ]);
             $insurance->save();
             $firms = firms::where('firm', 'LIKE', '%' . $request->get('firm') . '%')->get();
@@ -156,7 +156,8 @@ class insuranceAddController extends Controller
                     'lastVizaBeginning3' => $request->get('lastVizaBeginning3'),
                     'lastVizaEnding3' => $request->get('lastVizaEnding3'),
                     'lastVizaBeginning4' => $request->get('lastVizaBeginning4'),
-                    'lastVizaEnding4' => $request->get('lastVizaEnding4')
+                    'lastVizaEnding4' => $request->get('lastVizaEnding4'),
+                    'tel' => $request->get('tel'),
                 ]);
                 $client->save();
                 if($request->get('printFlag') != '0' ){
@@ -190,6 +191,7 @@ class insuranceAddController extends Controller
                 $client->lastVizaEnding3 = $request->get('lastVizaEnding3');
                 $client->lastVizaBeginning4 = $request->get('lastVizaBeginning4');
                 $client->lastVizaEnding4 = $request->get('lastVizaEnding4');
+                $client->tel = $request->get('tel');
                 $client->save();
                 if($request->get('printFlag') != '0' ){
                     $str = explode('-', $request->get('passportDate'));

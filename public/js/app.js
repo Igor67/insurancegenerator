@@ -38720,8 +38720,7 @@ var render = function() {
                 _vm.lastVizaEnding3 = _vm.Passports[0].lastVizaEnding3
                 _vm.lastVizaBeginning4 = _vm.Passports[0].lastVizaBeginning4
                 _vm.lastVizaEnding4 = _vm.Passports[0].lastVizaEnding4
-                _vm.firm = _vm.Passports[0].firm
-                _vm.firmBody = _vm.Passports[0].firmBody
+                _vm.tel = _vm.Passports[0].tel
               }
             }
           },
@@ -38991,11 +38990,10 @@ var render = function() {
                   _vm.summ = _vm.Pols[0].summ
                   _vm.fran = _vm.Pols[0].fran
                   _vm.type = _vm.Pols[0].type
-                  _vm.tel = _vm.Pols[0].tel
                 }
               }
             },
-            [_vm._v("\n            Импортировать по названию фирмы.\n        ")]
+            [_vm._v("\n            Импортировать по номеру полиса.\n        ")]
           ),
           _vm._v(" "),
           _c("span", { staticClass: "star" }, [_vm._v("*")]),

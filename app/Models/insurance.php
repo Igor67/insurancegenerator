@@ -25,8 +25,7 @@ class insurance extends Model
         'login',
         'polNumber',
         'type',
-        'createDate',
-        'tel'
+        'createDate'
     ];
 
 
