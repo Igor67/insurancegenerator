@@ -79,7 +79,7 @@
         <div v-if="test === 'strahovka' || test === 'all'">
             <label for="fran">Франшиза</label>
             <span class="star">*</span>
-            <input required id="fran"  v-model="fran" name="fran" type="number" class="form-control">
+            <input required id="fran" v-model="fran" name="fran" type="number" class="form-control">
         </div>
         <div v-if="test === 'strahovka' || test === 'all'">
             <label for="polNumber">Номер полиса</label>
@@ -97,7 +97,7 @@
         <div v-if="test === 'strahovka' || test === 'all'">
             <label for="createDate">Дата создания полиса</label>
             <span class="star">*</span>
-            <input required id="createDate"  v-model="createDate" name="createDate" type="date" class="form-control">
+            <input required id="createDate" v-model="createDate" name="createDate" type="date" class="form-control">
         </div>
         <div>
             <label for="tel">Номер в месседжерах</label>
@@ -233,7 +233,7 @@ export default {
             test: 'all',
             Firms: [],
             Pols: [],
-            createDate: new Date().toISOString().slice(0,10),
+            createDate: new Date().toISOString().slice(0, 10),
             fran: '50',
             type: 'A',
             summ: '30000',
@@ -279,12 +279,9 @@ export default {
                 .then(res => this.Firms = res.data)
                 .catch(error => {
                 });
-        },
-        getResultsInsurances() {
-            axios.get('/liveSearchInsurance', {params: {polNumber: this.polNumber}})
-                .then(res => this.Pols = res.data)
-                .catch(error => {
-                });
+        }, getResultsInsurances() {
+            axios.get('/liveSearchInsurance', {params: {polNumber: this.polNumber}}).then(res => this.Pols = res.data).catch(error => {
+            });
         },
 
     }
