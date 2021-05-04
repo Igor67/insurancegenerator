@@ -18,7 +18,7 @@ use App\Models\insurance;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/insurance/create');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -26,7 +26,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Auth::routes();
-
+Route::get('/register', function () {
+    return 'Регистрация отключена.';
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('insurance/people/preview', [\App\Http\Controllers\insuranceAddController::class, 'previewPeople'])->name('people');

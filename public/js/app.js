@@ -2034,6 +2034,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['test', 'giverName', 'giverLastName', 'passportNumber', 'birthday', 'home', 'days', 'startdate', 'prem', // 'summ',
   // 'fran',
@@ -2096,7 +2106,7 @@ __webpack_require__.r(__webpack_exports__);
     getResults: function getResults() {
       var _this = this;
 
-      axios.get('/liveSearch', {
+      axios.get('/igor/public/liveSearch', {
         params: {
           passportNumber: this.passportNumber
         }
@@ -2107,7 +2117,7 @@ __webpack_require__.r(__webpack_exports__);
     getResultsFirms: function getResultsFirms() {
       var _this2 = this;
 
-      axios.get('/liveSearchFirms', {
+      axios.get('/igor/public/liveSearchFirms', {
         params: {
           firm: this.firm
         }
@@ -2118,7 +2128,7 @@ __webpack_require__.r(__webpack_exports__);
     getResultsInsurances: function getResultsInsurances() {
       var _this3 = this;
 
-      axios.get('/liveSearchInsurance', {
+      axios.get('/igor/public/liveSearchInsurance', {
         params: {
           polNumber: this.polNumber
         }
@@ -38671,7 +38681,7 @@ var render = function() {
     _vm.test === "anketa" || _vm.test === "all"
       ? _c("div", [
           _c("label", { attrs: { for: "lastNameGirl" } }, [
-            _vm._v("Девичья Фамилия\n            "),
+            _vm._v("Девичья Фамилия\n                "),
             _c(
               "button",
               {
@@ -38683,10 +38693,14 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Импортировать\n                фамилию\n            ")]
+              [
+                _vm._v(
+                  "Импортировать\n                    фамилию\n                "
+                )
+              ]
             )
           ]),
-          _vm._v("/anketa\n        "),
+          _vm._v("/anketa\n            "),
           _c("input", {
             directives: [
               {
@@ -38715,7 +38729,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", [
       _c("label", { attrs: { for: "passportNumber" } }, [
-        _vm._v("Номер паспорта\n            "),
+        _vm._v("Номер паспорта\n                "),
         _c(
           "button",
           {
@@ -38750,7 +38764,7 @@ var render = function() {
           },
           [
             _vm._v(
-              "\n                Импортировать по номеру паспорта\n            "
+              "\n                    Импортировать по номеру паспорта\n                "
             )
           ]
         )
@@ -38772,7 +38786,8 @@ var render = function() {
           required: "",
           id: "passportNumber",
           name: "passportNumber",
-          type: "text"
+          type: "text",
+          list: "passport"
         },
         domProps: { value: _vm.passportNumber },
         on: {
@@ -38783,7 +38798,18 @@ var render = function() {
             _vm.passportNumber = $event.target.value
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _vm.passportNumber && parseInt(_vm.passportNumber.length) > 4
+        ? _c(
+            "datalist",
+            { attrs: { id: "passport" } },
+            _vm._l(_vm.Passports, function(pass) {
+              return _c("option", [_vm._v(_vm._s(pass["passportNumber"]))])
+            }),
+            0
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c("div", [
@@ -39017,7 +39043,11 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Импортировать по номеру полиса.\n        ")]
+            [
+              _vm._v(
+                "\n                Импортировать по номеру полиса.\n            "
+              )
+            ]
           ),
           _vm._v(" "),
           _c("span", { staticClass: "star" }, [_vm._v("*")]),
@@ -39589,7 +39619,11 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Импортировать по названию фирмы.\n        ")]
+            [
+              _vm._v(
+                "\n                Импортировать по названию фирмы.\n            "
+              )
+            ]
           ),
           _vm._v(" "),
           _c("input", {
@@ -39602,7 +39636,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { id: "firm", name: "firm", type: "text" },
+            attrs: { id: "firm", name: "firm", type: "text", list: "firmL" },
             domProps: { value: _vm.firm },
             on: {
               input: function($event) {
@@ -39612,7 +39646,18 @@ var render = function() {
                 _vm.firm = $event.target.value
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.firm && parseInt(_vm.firm.length) > 4
+            ? _c(
+                "datalist",
+                { attrs: { id: "firmL" } },
+                _vm._l(_vm.Firms, function(firm) {
+                  return _c("option", [_vm._v(_vm._s(firm["firm"]))])
+                }),
+                0
+              )
+            : _vm._e()
         ])
       : _vm._e(),
     _vm._v(" "),

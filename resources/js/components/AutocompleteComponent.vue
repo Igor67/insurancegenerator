@@ -44,8 +44,14 @@
                 </button>
             </label>
             <span class="star">*</span>
+<!--            <input required id="passportNumber" v-model="passportNumber" name="passportNumber" type="text"-->
+<!--                   class="form-control">-->
             <input required id="passportNumber" v-model="passportNumber" name="passportNumber" type="text"
-                   class="form-control">
+                   class="form-control" list="passport">
+
+            <datalist v-if="passportNumber && parseInt(passportNumber.length) > 4"  id="passport">
+                <option v-for="pass in Passports">{{ pass['passportNumber'] }}</option>
+            </datalist>
         </div>
         <div>
             <label for="birthday">Дата рождения</label>
@@ -171,7 +177,11 @@
                     v-on:click="firm = Firms[0].firm; firmBody=Firms[0].firmBody; electronicNumber = Firms[0].electronicNumber">
                 Импортировать по названию фирмы.
             </button>
-            <input id="firm" v-model="firm" name="firm" type="text" class="form-control">
+            <input id="firm" v-model="firm" name="firm" type="text" class="form-control" list="firmL">
+
+            <datalist v-if="firm && parseInt(firm.length) > 4"  id="firmL">
+                <option v-for="firm in Firms">{{ firm['firm'] }}</option>
+            </datalist>
         </div>
         <div v-if="test === 'anketa' || test === 'all'">
             <label for="firmBody">Тел фирмы</label>
@@ -269,18 +279,18 @@ export default {
     },
     methods: {
         getResults() {
-            axios.get('/liveSearch', {params: {passportNumber: this.passportNumber}})
+            axios.get('/igor/public/liveSearch', {params: {passportNumber: this.passportNumber}})
                 .then(res => this.Passports = res.data)
                 .catch(error => {
                 });
         },
         getResultsFirms() {
-            axios.get('/liveSearchFirms', {params: {firm: this.firm}})
+            axios.get('/igor/public/liveSearchFirms', {params: {firm: this.firm}})
                 .then(res => this.Firms = res.data)
                 .catch(error => {
                 });
         }, getResultsInsurances() {
-            axios.get('/liveSearchInsurance', {params: {polNumber: this.polNumber}}).then(res => this.Pols = res.data).catch(error => {
+            axios.get('/igor/public/liveSearchInsurance', {params: {polNumber: this.polNumber}}).then(res => this.Pols = res.data).catch(error => {
             });
         },
 
